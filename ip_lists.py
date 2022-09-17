@@ -10,5 +10,6 @@ def get_ip_list(line_list):
         ips = re.findall(ip_regex, line_list)
         ip_list.extend(ips)
         return ip_list
+        
     except Exception as e:
         raise e
