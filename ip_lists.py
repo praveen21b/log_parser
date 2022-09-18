@@ -1,8 +1,8 @@
 import re
 
-def get_ip_list(line_list):
+def get_ip_list(line_list:list)->list:
     """Check the string with the regex pattern and get ip list
-        # ip address r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
+        #### ip address r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
     """
     ip_list = []
     try:

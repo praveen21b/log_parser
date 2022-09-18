@@ -1,5 +1,5 @@
 import re
-import csv
+#import csv
 
 # def finding_delimiter(line):
 #     for i in (line):
@@ -26,9 +26,9 @@ def get_bytes_int(lists:list):
         raise e
 
 
-def get_bytes_list(line_list):
+def get_bytes_list(line_list:list)->list:
     """Check the string with the regex pattern and get ip list
-        # bytes r'\s\d{1,8}\s'
+        ##### bytes r'\s\d{1,8}\s'
         (\s for space: can be changed depending on the delimiter)
     """
     bytes_list = []
