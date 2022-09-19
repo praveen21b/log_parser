@@ -9,7 +9,7 @@ def path_check(file_path:str)->str:
             return 'file'
 
     except Exception as e:
-        raise e
+        raise (e)
 
 
 def read_file(file_path:str)->list:
@@ -18,7 +18,7 @@ def read_file(file_path:str)->list:
         with open(file_path,encoding='utf-8') as f:
             return (f.readlines())
     except Exception as e:
-        raise e
+        raise (e)
 
 
 def read_directory(file_path:str)->list:
@@ -26,7 +26,7 @@ def read_directory(file_path:str)->list:
     try:
         return os.listdir(file_path)
     except Exception as e:
-        raise e
+        print(e)
 
 def create_file_path(base_path:str,file_list:list)->list:
     """Takes file list and creates 
@@ -34,7 +34,8 @@ def create_file_path(base_path:str,file_list:list)->list:
     address_list = []
     try:
         for file in file_list:
-            address_list.append(os.path.join(base_path, file))
+            new_paths = os.path.join(base_path, file)
+            address_list.append(new_paths)
             return address_list
     except Exception as e:
         raise e
@@ -45,16 +46,28 @@ def directoty_read(file_path:str)->list:
 
     try:
         file_type = path_check(file_path)
+        # print(file_type)
         if file_type == 'file':
             file_lines_list.extend(read_file(file_path))
         elif file_type == 'directory':
             # file list in a directory
             file_list = read_directory(file_path)
+            # print(file_list)
             # get the list of addresses for each file
             file_address_list = create_file_path(file_path,file_list)
+            # print(file_address_list)
             for address in file_address_list:
-                file_lines_list.extend(read_file(file_path))
+                file_lines_list.extend(read_file(address))
         return file_lines_list
 
     except Exception as e:
-        raise e
+        raise (e)
+
+# file_path = input('enter path:')
+# os.chdir(file_path)
+#file_path = os.getcwd()
+#print(path_check(file_path))
+#print(read_directory(file_path))
+#lists = (create_file_path(file_path,read_directory(file_path)))
+#print(read_file(lists[0]))
+# print(directoty_read(file_path))

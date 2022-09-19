@@ -23,7 +23,7 @@ def get_bytes_int(lists:list):
         return new
     
     except Exception as e:
-        raise e
+        raise (e)
 
 
 def get_bytes_list(line_list:list)->list:
@@ -34,9 +34,10 @@ def get_bytes_list(line_list:list)->list:
     bytes_list = []
     try:
         bytes_regex = r'\s\d{1,8}\s'
-        time_stamps = re.findall(bytes_regex, line_list)
-        bytes_list.extend(time_stamps)
+        for line in line_list:
+            time_stamps = re.findall(bytes_regex, line)
+            bytes_list.extend(time_stamps)
         return get_bytes_int(bytes_list)
 
     except Exception as e:
-        raise e
+        raise (e)
