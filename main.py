@@ -5,6 +5,7 @@ from time_stamp import get_time_stamp_list
 from collections import Counter
 import json
 import os
+from save_result import save_file
 
 def main():
     try:
@@ -12,6 +13,7 @@ def main():
         file_path = (input('Please enter file or directory path: '))
         #os.chdir(file_path)
         #path = f"r'{path}'"
+        output_path = input('Enter the address to save the result: ')
 
         file_lines_list = directoty_read(file_path)
 
@@ -40,9 +42,9 @@ def main():
         res['least_frequent_ip'] = least_frequent_ip
         res['events_per_second'] = events_per_second
         res['total_bytes'] = total_bytes
-        #output_path = input('Enter the address to save the result: ')
-        return json.dumps(res, indent = 4)
-        #return res
+        
+        #return json.dumps(res, indent = 4)
+        return save_file(output_path,res)
         
     except Exception as e:
         raise (e)
