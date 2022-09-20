@@ -46,28 +46,16 @@ def directoty_read(file_path:str)->list:
 
     try:
         file_type = path_check(file_path)
-        # print(file_type)
         if file_type == 'file':
             file_lines_list.extend(read_file(file_path))
         elif file_type == 'directory':
             # file list in a directory
             file_list = read_directory(file_path)
-            # print(file_list)
             # get the list of addresses for each file
             file_address_list = create_file_path(file_path,file_list)
-            # print(file_address_list)
             for address in file_address_list:
                 file_lines_list.extend(read_file(address))
         return file_lines_list
 
     except Exception as e:
         raise (e)
-
-# file_path = input('enter path:')
-# os.chdir(file_path)
-#file_path = os.getcwd()
-#print(path_check(file_path))
-#print(read_directory(file_path))
-#lists = (create_file_path(file_path,read_directory(file_path)))
-#print(read_file(lists[0]))
-# print(directoty_read(file_path))

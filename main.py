@@ -3,7 +3,7 @@ from bytes_int import get_bytes_list
 from ip_lists import get_ip_list
 from time_stamp import get_time_stamp_list
 from collections import Counter
-#import json
+import json
 import os
 
 def main():
@@ -19,11 +19,14 @@ def main():
         total_bytes = sum(get_bytes_list(file_lines_list))
 
         # getting ip_list, max, and min freq ip address
-        #dicts = Counter(get_ip_list(file_lines_list))
-        #ips_sorted_frq = list(dicts.keys())
-        # # dict unordered: check for alternative
-        # most_frequent_ip = ips_sorted_frq[0]
-        # least_frequent_ip = ips_sorted_frq[-1]exit
+        dicts = Counter(get_ip_list(file_lines_list))
+        most_frequent_ip = dicts.most_common(1)[0][0]
+        # only taking last least_frequent_ip
+        least_frequent_ip = dicts.most_common()[-1][0]
+        
+        # ip_list = get_ip_list(file_lines_list)
+        # most_frequent_ip = max(ip_list, key=ip_list.count)
+        # least_frequent_ip = min(ip_list, key=ip_list.count)
 
         # total events per seconds
         time_lists = get_time_stamp_list(file_lines_list)
@@ -32,14 +35,14 @@ def main():
         events_per_second = total_events / time_duration
 
         # # final result
-        # res = {}
-        # res['most_frequent_ip'] = most_frequent_ip
-        # res['least_frequent_ip'] = least_frequent_ip
-        # res['events_per_second'] = events_per_second
-        # res['total_bytes'] = total_bytes
-
-        # #return json.dumps(res, indent = 4)
-        return time_duration
+        res = {}
+        res['most_frequent_ip'] = most_frequent_ip
+        res['least_frequent_ip'] = least_frequent_ip
+        res['events_per_second'] = events_per_second
+        res['total_bytes'] = total_bytes
+        #output_path = input('Enter the address to save the result: ')
+        return json.dumps(res, indent = 4)
+        #return res
         
     except Exception as e:
         raise (e)
