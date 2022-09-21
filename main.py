@@ -8,6 +8,7 @@ import os
 from save_result import save_file
 
 def main():
+    """ Function ask inputs from user and save result in the specified location"""
     try:
         # ask for path
         file_path = (input('Please enter file or directory path: '))
