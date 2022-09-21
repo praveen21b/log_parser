@@ -43,7 +43,7 @@ Field 10: image/gif [Response type]
 1. Input Data
     - Path to one or more plain text files, or a directory
 2. Operations
-    - Most frequent IP
+    - Most frequent IP (Parsed all the ips)
     - Least frequent IP (Took only last element of sorted frequencny list)
     - Events per second
     - Total amount of bytes exchanged
