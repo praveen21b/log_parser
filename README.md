@@ -54,4 +54,4 @@ Field 10: image/gif [Response type]
     - Create docker container: 
     ```docker build -t log-parser```
     - Running container image in interactive mode: 
-    ```docker run -t -i log-parser
+    ```docker run -t -i log-parser```
