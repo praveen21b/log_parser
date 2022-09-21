@@ -51,8 +51,11 @@ Field 10: image/gif [Response type]
     - Path to a file to save output in plain text JSON format
 
 ## Dockerfile operations
-    - Create docker container: 
-
-    ``` docker build -t log-parser ```
-    - Running container image in interactive mode: 
-    ``` docker run -t -i log-parser ```
+1. Create docker container: 
+```
+docker build -t log-parser 
+```
+2. Running container image in interactive mode: 
+```
+docker run -t -i log-parser
+```
